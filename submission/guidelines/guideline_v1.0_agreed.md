@@ -48,7 +48,8 @@ Phép thử lớp / thuộc tính: *"mô hình 2D có phải đoán ra điều n
 | `truncated` | `no` / `yes` | `yes` khi box chạm mép ảnh (cách mép ≤ 2 px) **và** vật rõ ràng còn kéo dài ra ngoài khung, bất kể mất bao nhiêu. Còn lại `no`. |
 | `can_review` | `false` / `true` | Bật khi đã vẽ box nhưng còn nghi ngờ về lớp, ranh giới hoặc cách áp dụng quy tắc. Đây là cờ để reviewer kiểm lại, không phải lý do để bỏ qua ca. |
 
-- Mẫu số để ước lượng % che là **bản thân vật** (thân người / thân xe), không tính hàng hóa (vì hàng không nằm trong box, R-05).
+- Mẫu số để ước lượng % che là **toàn bộ khối trong box**: vật cộng với hàng / đồ mang theo được bao cùng theo R-05.
+- `truncated` cũng xét toàn bộ khối đó: chỉ phần hàng bị mép ảnh cắt vẫn tính `yes`.
 - Phần mất do **mép ảnh** chỉ tính vào `truncated`, không tính vào `occluded_level`.
 - Dùng thuộc tính `occluded_level` trong panel Objects. **Không dùng** cờ `occluded` có sẵn của CVAT (phím `Q`), vì script bỏ qua cờ này.
 
@@ -58,15 +59,15 @@ Phép thử lớp / thuộc tính: *"mô hình 2D có phải đoán ra điều n
 |---|---|
 | R-01 | **Phần nhìn thấy:** box chữ nhật nhỏ nhất ôm sát phần nhìn thấy của vật, không đoán phần bị che. Một vật có nhiều phần nhìn thấy rời nhau (bị cột, người che ngang) vẫn chỉ có **1 box** bao các phần đó. |
 | R-02 | **Vật không thật:** không gán tượng, mô hình, ma-nơ-canh, đồ chơi, hình in (biển quảng cáo, poster), và người / xe trong phản chiếu (gương, kính, mặt nước). Vật thật khác trong cùng ảnh vẫn gán bình thường. Không tạo `ignore_region` cho vật bị loại theo quy tắc này. Ảnh chỉ có vật mô phỏng vẫn giữ trong Task, với 0 box. |
-| R-03 | **Người trên xe** (xe máy, xe đạp, xích lô, tuk-tuk): mỗi người (lái và chở) **1 box `person`**, xe **1 box riêng** theo lớp xe. Hai box được phép chồng lấn. Box `person` bao cả mũ bảo hiểm và phần chân nhìn thấy. Box xe bao xe từ đầu tới đuôi; người ngồi trên xe **không tính** là vật che khi chấm `occluded_level` của xe. |
-| R-04 | **Xe chở xe** (`img_002`): **1 box `truck`** bao đầu kéo và khung sàn chở, cộng **1 box `car` cho mỗi xe con** nhìn thấy trên sàn (không gộp nhiều xe con vào một box). Xe con bị khung sàn che thì chấm `occluded_level`. Xe con < 20 px áp dụng R-06. |
-| R-05 | **Hàng hóa và đồ mang theo:** box xe chỉ bao **thân xe**, không bao phần hàng nhô ra ngoài thân xe (`img_035` tuk-tuk chất hàng trên nóc, `img_029` xe máy chở hàng, `img_010` xe đạp chở hàng). Hàng nằm gọn trong thùng xe (`img_012`) thì tự nằm trong box xe. Box `person` bao thân người và đồ đội / mặc / đeo sát người; **không** kéo ra để bao đòn gánh, thúng hàng, xe đẩy (`img_003`). Hàng không có box riêng. `truncated` chỉ xét thân vật, không xét hàng. |
+| R-03 | **Người trên xe** (xe máy, xe đạp, xích lô, tuk-tuk): mỗi người (lái và chở) **1 box `person`**, xe **1 box riêng** theo lớp xe. Hai box được phép chồng lấn. Box `person` bao cả mũ bảo hiểm và phần chân nhìn thấy. Box xe bao xe từ đầu tới đuôi (cộng hàng đang chở theo R-05), **không** kéo rộng ra chỉ để bao người lái / người ngồi. Người ngồi trên xe **không tính** là vật che khi chấm `occluded_level` của xe. |
+| R-04 | **Xe chở xe** (`img_002`): **1 box `truck`** bao đầu kéo, khung sàn **và cả cụm xe con đang chở** (theo R-05, vì xe con là hàng của xe tải). Đồng thời **mỗi xe con** nhìn thấy trên sàn vẫn có **1 box `car` riêng** (không gộp nhiều xe con vào một box), nằm bên trong box `truck`. Xe con bị khung sàn che thì chấm `occluded_level`. Xe con < 20 px áp dụng R-06. |
+| R-05 | **Hàng hóa và đồ mang theo, box bao cả hàng.** **Xe chở hàng:** box xe là box nhỏ nhất bao phần nhìn thấy của **xe cùng hàng** đang được gắn, buộc hoặc đặt trên xe để vận chuyển, kể cả hàng nhô cao hoặc vượt ra hai bên (`img_035` tuk-tuk chất hàng trên nóc, `img_029` xe máy chở hàng, `img_010` xe đạp chở hàng, `img_012` bán tải chở hàng). **Người mang hàng:** box `person` bao **người cùng đồ đang mang / gánh / đẩy**: đòn gánh và thúng hàng, túi xách, hành lý, xe đẩy tay (`img_003` người gánh hàng rong). Box được phép chứa khoảng nền trống giữa người và hai đầu gánh; đây là khoảng trống bắt buộc, không phải box lỏng. Hàng hoặc đồ **đặt rời** gần đó, không được chở / mang, thì **không** tính vào box. Hàng không có box riêng, trừ khi bản thân hàng là phương tiện thuộc taxonomy (R-04). |
 | R-06 | **Vật nhỏ:** vật có chiều cao phần nhìn thấy **< 20 px** (`rules.min_box_height_px`) không vẽ box theo lớp. Khoanh vùng chứa vật bằng `ignore_region` ôm sát, không phủ sang vật khác còn đủ điều kiện gán. Vật cao **đúng 20 px** vẫn gán box bình thường. |
 | R-07 | **Đám đông / cụm chồng lấp:** chỉ khoanh `ignore_region` cho **phần không tách được** từng vật. Vật nhìn rõ xung quanh vẫn gán riêng. Trong cụm, vật chỉ nhìn thấy < 20% (bị che > 80%) thì nằm trong vùng ignore, không vẽ box riêng. Không bỏ cả đám đông chỉ vì vài người bị che nhiều. |
 | R-08 | **Xe chủ (ego):** không gán phần đầu xe / gương / thân của xe đang chụp ảnh. |
 | R-09 | **Ảnh mờ do chuyển động hoặc mưa** (`img_014`, `img_015`): vẫn gán nếu nhận ra lớp. Box ôm phần thân nhận ra được, không bao vệt mờ kéo dài. Không xác định được ranh giới thì tick `can_review`. |
 | R-10 | **Xe diễu hành / xe trưng bày cỡ thật** (`img_019`, xe đen ở `img_024`): là phương tiện thật nên gán theo lớp có hình dạng tương ứng (thường là `car`), dù không chạy trong giao thông thường. Xe mô hình / đồ chơi cỡ nhỏ thì áp dụng R-02. |
-| R-11 | **Mô hình / vật trang trí gắn trên xe** (xe mô hình đặt trên nóc / capo ở `img_024`, vật trang trí trên bán tải `img_028`): không gán; chỉ gán chiếc xe thật mang nó. Box xe không bao vật trang trí nhô ra. |
+| R-11 | **Mô hình / vật trang trí gắn cố định trên xe** (xe mô hình đặt trên nóc / capo ở `img_024`, vật trang trí trên bán tải `img_028`): không gán box riêng; chỉ gán chiếc xe thật mang nó. Đây là vật trang trí, không phải hàng đang vận chuyển, nên box xe **không** bao phần vật trang trí nhô ra (khác R-05). Không chắc là hàng hay vật trang trí thì tick `can_review`. |
 | R-12 | **Bán tải (pickup):** gán `truck`, kể cả khi thùng có nắp cao (`img_037`, Master 75 Truck Cap). Lý do: thùng hàng tách khỏi cabin, đúng định nghĩa `truck`. Xe có khoang hàng liền một khối với cabin mới là `van`. |
 
 ## 4. Ca khó
@@ -75,12 +76,12 @@ Phép thử lớp / thuộc tính: *"mô hình 2D có phải đoán ra điều n
 
 | Ảnh | Tình huống | Rule | Quyết định |
 |---|---|---|---|
-| `img_002` | Đầu kéo chở nhiều ô tô trên 2 sàn | R-04 | 1 `truck` + 1 `car` cho mỗi xe con nhìn thấy |
-| `img_003` | Người gánh hàng rong; xe đạp | R-03, R-05 | `person` chỉ bao thân người, không bao đòn gánh / thúng; xe đạp → `bicycle` |
+| `img_002` | Đầu kéo chở nhiều ô tô trên 2 sàn | R-04, R-05 | 1 `truck` bao đầu kéo, sàn và cả cụm xe con đang chở + 1 `car` riêng cho mỗi xe con nhìn thấy |
+| `img_003` | Người gánh hàng rong; xe đạp | R-03, R-05 | `person` bao người cùng đòn gánh và thúng hàng; xe đạp → `bicycle` (bao cả hàng nếu đang chở) |
 | `img_004`, `img_016` | Tuk-tuk | lớp | `tuk_tuk` |
-| `img_035` | Auto rickshaw chở quá tải, hàng chất trên nóc | R-05 | `tuk_tuk`, box chỉ bao thân xe, không bao khối hàng |
-| `img_010` | Xe đạp chở hàng | R-03, R-05 | `bicycle` bao thân xe (không bao hàng nhô ra); người đạp → `person` riêng |
-| `img_029` | Xe máy chở hàng cồng kềnh | R-03, R-05 | `motorcycle` bao thân xe; người lái → `person` riêng |
+| `img_035` | Auto rickshaw chở quá tải, hàng chất trên nóc | R-05 | `tuk_tuk`, box bao cả xe và khối hàng trên nóc |
+| `img_010` | Xe đạp chở hàng | R-03, R-05 | `bicycle` bao cả xe và hàng đang chở; người đạp → `person` riêng |
+| `img_029` | Xe máy chở hàng cồng kềnh | R-03, R-05 | `motorcycle` bao cả xe và hàng đang chở; người lái → `person` riêng |
 | `img_005`, `img_026` | Người đi xe máy | R-03 | Mỗi người 1 `person` + mỗi xe 1 `motorcycle` |
 | `img_006`, `img_023` | Xích lô (tour Huế) | lớp, R-03 | Xích lô → `cyclo`; người ngồi / đạp → `person`; xe máy, ô tô thật trong cảnh vẫn gán |
 | `img_037` | Bán tải gắn nắp thùng cao; có xe buýt | R-12 | Bán tải → `truck`; xe buýt → `bus` |
@@ -102,7 +103,7 @@ Phép thử lớp / thuộc tính: *"mô hình 2D có phải đoán ra điều n
 
 | Vấn đề | 101 | 102 | 103 | Chốt v1.0 | Lý do |
 |---|---|---|---|---|---|
-| Hàng chở cồng kềnh | Không bao hàng | Bao cả hàng (mọi xe, cả người gánh) | Chỉ riêng `img_035` bao hàng | **Không bao hàng** (R-05) | Một quy tắc chung cho mọi xe và người, dễ áp dụng nhất quán hơn ngoại lệ theo từng ảnh. Box ôm thân vật ổn định hơn nên IoU giữa người gán cao hơn. Hàng không phải lớp mô hình cần phát hiện. Khớp quyết định mẫu trong tài liệu lab cho `img_035`. |
+| Hàng chở cồng kềnh, đồ người mang | Không bao hàng | Bao cả hàng (mọi xe, cả người gánh) | Chỉ riêng `img_035` bao hàng | **Bao cả hàng, theo 102** (R-05) | Một quy tắc chung cho mọi xe và mọi người, dễ áp dụng nhất quán hơn ngoại lệ theo từng ảnh (bản 103). Khối xe + hàng (hoặc người + đồ gánh) là vùng thực tế chiếm chỗ trên đường, nên box bao cả khối phản ánh đúng kích thước vật cần tránh. Ranh giới "thân xe" khi hàng che kín thân xe rất khó xác định, còn bao cả khối thì rõ hơn. Nhóm chọn cách này tại họp CP2, khác quyết định mẫu trong tài liệu lab cho `img_035`. |
 | Bán tải, `img_037` | `truck` | — | `van` | **`truck`** (R-12) | v0: `truck` = "xe có thùng hàng riêng". Thùng bán tải tách khỏi cabin; nắp thùng chỉ là phụ kiện. |
 | Xe đạp, xích lô | Không gán xe | Thêm `bicycle`, `cyclo` | Thêm `bicycle`, `cyclo` | **Thêm 2 lớp** | Đa số 2/3. Tránh ép xe không động cơ vào `motorcycle`. Mô hình cần phân biệt chúng với xe máy / tuk-tuk. |
 | Vật đơn lẻ < 20 px | `ignore_region` | `ignore_region` | Không gán gì | **`ignore_region`** (R-06) | Đa số 2/3, và theo `docs/QC_CHEATSHEET.md`: vật nhỏ → `ignore_region`. Tránh bị tính bỏ sót khi so IAA. |
