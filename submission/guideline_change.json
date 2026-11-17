@@ -1,0 +1,4 @@
+{
+  "kind": "editorial",
+  "summary": "v1.1 chỉ làm rõ câu chữ và bổ sung ví dụ sau 483 ca calibration: mỗi vật đúng 1 box (R-01), ví dụ phản chiếu trong gương img_020 (R-02), ignore_region không phủ vật >= 20 px tách được (R-06/R-07), che do chính xe mình ngồi tính vào người, phần mất do mép ảnh chỉ tính truncated, nhãn cuối không còn can_review, thêm ví dụ lớp (bán tải → truck, SUV → car, xe ba bánh → tuk_tuk, sidecar trong motorcycle). Không đổi cách chọn vật, lớp, box hay thuộc tính; taxonomy giữ v1.0."
+}
