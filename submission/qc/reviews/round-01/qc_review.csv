@@ -1,0 +1,42 @@
+image,object_id,error_type,reviewer,rule_id,region,note
+img_001.jpg,2,sai_vi_tri_kich_thuoc,103,R-01,,"Box truck lấn sang trái tới x≈98, phủ cả nhóm người; thân xe tải nhìn thấy bắt đầu từ x≈235"
+img_002.jpg,16,sai_vi_tri_kich_thuoc,103,R-04,,Box truck phải bao cả cụm xe con đang chở (đỉnh xe đỏ tầng trên y≈48); hiện mới từ y≈128
+img_003.jpg,,khong,103,,,
+img_004.jpg,,khong,103,,,
+img_005.jpg,51,sai_lop,103,lớp van,,"Xe bạc 51LD-70-65 (Toyota Hiace, khoang hàng liền cabin) là van, đang gán car"
+img_006.jpg,,khong,103,,,
+img_007.jpg,,khong,103,,,
+img_008.jpg,,khong,103,,,
+img_009.jpg,,khong,103,,,
+img_010.jpg,,khong,103,,,
+img_011.jpg,,bo_sot,103,"R-06, R-07","khách tham quan ở hậu cảnh giữa ảnh, x≈280–460, y≈330–390",Nhiều người cao ~30–50 px chưa có box cũng chưa có ignore_region
+img_012.jpg,,khong,103,,,
+img_013.jpg,,khong,103,,,
+img_014.jpg,,khong,103,,,
+img_015.jpg,146,sai_thuoc_tinh,103,thuộc tính occluded_level,,"Xe bạc bên phải chỉ bị mép ảnh cắt: occluded_level phải là 0 (đang 3), truncated=yes"
+img_015.jpg,151,sai_thuoc_tinh,103,thuộc tính occluded_level,,"Xe đỏ bên trái chỉ bị mép ảnh cắt: occluded_level phải là 0 (đang 3), truncated=yes"
+img_016.jpg,,khong,103,,,
+img_017.jpg,,khong,103,,,
+img_018.jpg,,khong,103,,,
+img_019.jpg,,khong,103,,,
+img_020.jpg,,khong,103,,,
+img_021.jpg,,bo_sot,103,R-07,"dòng xe máy và người ở xa, giữa ảnh, y≈205–260, x≈380–900",Cụm đông ở xa chưa có box cũng chưa có ignore_region
+img_022.jpg,,khong,103,,,
+img_023.jpg,,khong,103,,,
+img_024.jpg,,khong,103,,,
+img_025.jpg,,khong,103,,,
+img_026.jpg,,khong,103,,,
+img_027.jpg,,khong,103,,,
+img_028.jpg,,khong,103,,,
+img_029.jpg,259,sai_vi_tri_kich_thuoc,103,R-05,,Xe máy chở ống kim loại dài (x≈60–900): box xe chưa bao hàng đang chở
+img_030.jpg,,bo_sot,103,R-01,"xe máy đỗ ở mép trái, x≈0–95, y≈150–330","Xe máy nhìn thấy đèn và thân xe, chưa có box"
+img_031.jpg,,khong,103,,,
+img_032.jpg,,khong,103,,,
+img_033.jpg,,khong,103,,,
+img_034.jpg,,khong,103,,,
+img_035.jpg,,khong,103,,,
+img_036.jpg,,khong,103,,,
+img_037.jpg,,khong,103,,,
+img_038.jpg,,khong,103,,,
+img_039.jpg,,khong,103,,,
+img_040.jpg,,bo_sot,103,R-03,"xe máy của người #381: tay lái và 2 gương ở x≈80–440, y≈475–640",Người đội mũ bảo hiểm đang ngồi trên xe máy; xe chưa có box (độ tin cậy trung bình)
