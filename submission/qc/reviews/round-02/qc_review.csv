@@ -1,0 +1,41 @@
+image,object_id,error_type,reviewer,rule_id,region,note
+img_001.jpg,,khong,103,,,Đã kiểm lại sau sửa Q01: box truck #2 đã thu về phần xe nhìn thấy
+img_002.jpg,,khong,103,,,Đã kiểm lại sau sửa Q02: box truck #16 đã bao cả cụm xe con đang chở
+img_003.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_004.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_005.jpg,51,sai_thuoc_tinh,103,thuộc tính occluded_level,,Q03 đạt (#51 đã là van). occluded_level=1 sai: người đi xe máy phía trước che khoảng 40–60% thân xe → phải là 2 (103 xác nhận)
+img_006.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_007.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_008.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_009.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_010.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_011.jpg,,khong,103,,,"Đã kiểm lại sau sửa Q04: 2 ignore_region (#130, #131) cho cụm khách ở xa, không phủ box"
+img_012.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_013.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_014.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_015.jpg,,khong,103,,,"Đã kiểm lại sau sửa Q05, Q06: #148, #153 occluded_level=0, truncated=yes"
+img_016.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_017.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_018.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_019.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_020.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_021.jpg,,khong,103,,,"Đã kiểm lại sau sửa Q07: 2 ignore_region (#219, #220) cho dòng xe ở xa"
+img_022.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_023.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_024.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_025.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_026.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_027.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_028.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_029.jpg,,khong,103,,,Đã kiểm lại sau sửa Q08: box motorcycle #263 đã bao cả ống kim loại (R-05)
+img_030.jpg,,khong,103,,,Đã kiểm lại sau sửa Q09: thêm motorcycle #282 ở mép trái
+img_031.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_032.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_033.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_034.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_035.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_036.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_037.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_038.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_039.jpg,,khong,103,,,Không đổi so với vòng 1 (đã duyệt sạch)
+img_040.jpg,,khong,103,,,"Đã kiểm lại sau sửa Q10: thêm motorcycle #390 (tay lái, gương của xe người #386)"

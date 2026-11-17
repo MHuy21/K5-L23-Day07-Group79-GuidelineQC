@@ -1,6 +1,6 @@
 image,class,x,y,w,h,occluded_level,truncated,nguon
 img_001.jpg,person,523.07,114.17,124.15,192.3,2,no,calibration
-img_001.jpg,truck,97.71,95.65,862.29,540.53,1,yes,calibration
+img_001.jpg,truck,335.0,96.0,625.0,541.0,1,yes,calibration
 img_001.jpg,person,93.17,101.07,132.24,331.49,1,no,calibration
 img_001.jpg,person,230.5,199.7,155.82,436.74,0,no,calibration
 img_001.jpg,person,381.25,113.71,153.2,207.21,1,no,calibration
@@ -14,7 +14,7 @@ img_002.jpg,car,716.77,149.9,111.9,98.57,1,no,calibration
 img_002.jpg,car,818.06,172.7,74.74,92.42,2,no,calibration
 img_002.jpg,car,480.48,88.31,154.67,129.04,2,no,calibration
 img_002.jpg,car,719.41,278.93,104.35,112.87,2,no,calibration
-img_002.jpg,truck,130.46,128.09,769.6,410.65,0,no,calibration
+img_002.jpg,truck,130.0,48.0,770.0,491.0,0,no,calibration
 img_002.jpg,car,151.6,48.78,359.38,161.15,0,no,calibration
 img_002.jpg,car,536.2,245.61,169.85,122.31,1,no,calibration
 img_003.jpg,motorcycle,745.99,42.41,76.78,130.99,2,no,calibration
@@ -49,7 +49,7 @@ img_005.jpg,person,537.06,148.21,367.24,485.24,0,no,calibration
 img_005.jpg,motorcycle,1.27,297.45,210.28,296.02,2,yes,calibration
 img_005.jpg,person,620.91,44.94,93.95,108.66,3,no,calibration
 img_005.jpg,person,318.76,116.41,171.82,161.95,3,no,calibration
-img_005.jpg,car,45.22,28.36,912.66,321.55,1,no,calibration
+img_005.jpg,van,45.22,28.36,912.66,321.55,2,no,calibration
 img_005.jpg,person,0.0,331.0,60.0,246.0,3,yes,calibration
 img_005.jpg,person,423.67,30.18,229.44,601.98,2,no,calibration
 img_005.jpg,person,899.12,100.88,45.67,76.59,2,no,calibration
@@ -144,12 +144,12 @@ img_014.jpg,person,261.85,120.59,221.54,586.11,0,no,calibration
 img_014.jpg,person,655.47,183.26,148.88,494.14,0,no,calibration
 img_014.jpg,motorcycle,445.59,341.15,241.7,183.78,2,no,calibration
 img_014.jpg,person,464.85,176.34,194.35,310.7,1,no,calibration
-img_015.jpg,car,767.42,58.83,192.12,376.52,3,yes,calibration
+img_015.jpg,car,767.42,58.83,192.12,376.52,0,yes,calibration
 img_015.jpg,car,435.0,124.0,168.0,80.0,1,no,calibration
 img_015.jpg,car,229.0,114.0,177.0,92.0,1,no,calibration
 img_015.jpg,car,0.04,118.35,56.74,63.59,3,yes,calibration
 img_015.jpg,car,56.79,124.86,162.88,80.98,1,no,calibration
-img_015.jpg,car,0.3,172.38,282.33,367.91,3,yes,calibration
+img_015.jpg,car,0.3,172.38,282.33,367.91,0,yes,calibration
 img_016.jpg,tuk_tuk,0.0,307.92,211.52,352.37,2,no,calibration
 img_016.jpg,person,774.52,443.95,184.74,275.33,2,yes,calibration
 img_016.jpg,person,410.38,320.22,101.14,224.01,0,no,calibration
@@ -256,7 +256,7 @@ img_028.jpg,car,611.36,334.17,286.18,87.72,2,no,calibration
 img_028.jpg,truck,25.75,300.02,911.49,401.36,0,no,calibration
 img_029.jpg,person,609.07,109.77,126.09,285.63,0,no,calibration
 img_029.jpg,person,182.26,173.47,44.72,122.22,0,no,calibration
-img_029.jpg,motorcycle,331.23,216.55,224.97,157.17,0,no,calibration
+img_029.jpg,motorcycle,60.0,118.0,845.0,256.0,0,no,calibration
 img_029.jpg,person,106.17,181.36,43.18,90.66,0,no,calibration
 img_029.jpg,bicycle,116.92,238.45,21.51,48.58,0,no,calibration
 img_029.jpg,person,276.96,191.78,21.38,46.28,2,no,calibration
@@ -274,6 +274,7 @@ img_030.jpg,motorcycle,97.56,146.43,158.04,169.45,2,no,calibration
 img_030.jpg,motorcycle,288.18,123.62,202.02,148.27,2,no,calibration
 img_030.jpg,motorcycle,368.01,125.25,192.25,131.97,2,no,calibration
 img_030.jpg,motorcycle,327.28,161.1,377.98,228.09,2,no,calibration
+img_030.jpg,motorcycle,0.0,150.0,95.0,180.0,2,yes,calibration
 img_031.jpg,motorcycle,234.1,388.67,26.21,44.66,1,no,calibration
 img_031.jpg,motorcycle,62.69,402.34,43.93,57.45,1,no,calibration
 img_031.jpg,bus,569.67,314.76,113.11,119.12,1,no,calibration
@@ -381,3 +382,4 @@ img_040.jpg,person,480.57,105.31,340.7,527.87,0,yes,calibration
 img_040.jpg,truck,0.37,116.66,71.42,97.63,2,yes,calibration
 img_040.jpg,car,24.8,142.14,935.01,492.33,1,yes,calibration
 img_040.jpg,bus,98.4,3.09,372.48,115.46,2,no,calibration
+img_040.jpg,motorcycle,75.0,475.0,370.0,165.0,3,yes,calibration

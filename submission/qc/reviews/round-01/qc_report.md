@@ -1,8 +1,9 @@
-# Báo cáo QC tự động
+# Báo cáo QC
 
 **REWORK**
 
 ## Vòng 1 — full
+
 - Ảnh đã duyệt 40/40; cả lô 40 ảnh.
 - Ảnh có lỗi trên ảnh đã duyệt: 9/40 = 22.5%.
 - Annotation đối tượng hiện có bị lỗi: 6/382 = 1.6%.
